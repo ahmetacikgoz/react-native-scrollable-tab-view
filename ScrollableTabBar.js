@@ -10,6 +10,7 @@ const {
   Dimensions,
 } = ReactNative;
 const Button = require('./Button');
+const data = require('./../../dia/store/data');
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 
@@ -51,6 +52,14 @@ const ScrollableTabBar = React.createClass({
       _widthTabUnderline: new Animated.Value(0),
       _containerWidth: null,
     };
+  },
+  
+  componentWillMount(){
+    if (data.isPortrait) {
+      WINDOW_WIDTH = Dimensions.get('window').width;
+    }else {
+      WINDOW_WIDTH = Dimensions.get('window').height;
+    }
   },
 
   componentDidMount() {
